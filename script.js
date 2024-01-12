@@ -5,9 +5,9 @@ let courtPrice = document.getElementById("court-price");
 
 let allCourts = [];
 
-// if (localStorage.getItem("Courts") != null) {
-//   allCourts = JSON.parse(localStorage.getItem("Courts"));
-// }
+if (localStorage.getItem("Courts") != null) {
+  allCourts = JSON.parse(localStorage.getItem("Courts"));
+}
 
 // show court data
 function showCourtData() {
@@ -20,13 +20,14 @@ function showCourtData() {
     <td>${allCourts[i].courtType}</td>
     <td>${allCourts[i].courtPrice}</td>
     <td><i class="fa-regular fa-pen-to-square"></i></td>
-    <td><i class="fa-solid fa-trash-can"></i></td>
+    <td><button onclick="deleteRow(${i})" class="del-btn"><i class="fa-solid fa-trash-can"></i></button></td>
   </tr>
     `;
   }
   document.getElementById("court-body-table").innerHTML = courts;
 }
 
+// add new court
 function addNewCourt() {
   let court = {
     courtId: courtId.value,
@@ -35,7 +36,6 @@ function addNewCourt() {
     courtPrice: Number(courtPrice.value),
   };
   allCourts.push(court);
-  // console.log(allCourts);
   localStorage.setItem("Courts", JSON.stringify(allCourts));
   showCourtData();
 }
@@ -44,3 +44,10 @@ let addCourtBtn = document.getElementById("add-court");
 addCourtBtn.addEventListener("click", addNewCourt);
 
 showCourtData();
+
+// delete row
+function deleteRow(i) {
+  allCourts.splice(i, 1);
+  localStorage.Courts = JSON.stringify(allCourts);
+  showCourtData();
+}

@@ -9,3 +9,8 @@ input {
 table {
   text-align: center;
 }
+
+.del-btn {
+  border: none;
+  background-color: none;
+}
