@@ -51,6 +51,7 @@ addCourtBtn.addEventListener("click", addNewCourt);
 
 showCourtData();
 
+// delete row
 function deleteRow(i) {
   allCourts.splice(i, 1);
   localStorage.Courts = JSON.stringify(allCourts);
