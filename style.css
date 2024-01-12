@@ -1,0 +1,11 @@
+input {
+  height: 35px;
+  outline: none;
+  border: none;
+  background-color: #e4e4e4;
+  border-radius: 6px;
+}
+
+table {
+  text-align: center;
+}
