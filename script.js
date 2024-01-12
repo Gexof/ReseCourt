@@ -1,4 +1,4 @@
-let courtId = document.getElementById("court-id");
+// let courtId = document.getElementById("court-id");
 let courtDesc = document.getElementById("court-desc");
 let courtType = document.getElementById("court-type");
 let courtPrice = document.getElementById("court-price");
@@ -15,11 +15,12 @@ function showCourtData() {
   for (let i = 0; i < allCourts.length; i++) {
     courts += `
     <tr>
-    <th>${allCourts[i].courtId}</th>
+    <th>${i + 1}</th>
     <td>${allCourts[i].courtDesc}</td>
     <td>${allCourts[i].courtType}</td>
     <td>${allCourts[i].courtPrice}</td>
-    <td><i class="fa-regular fa-pen-to-square"></i></td>
+    <td>
+    <button onclick="" class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button></td>
     <td><button onclick="deleteRow(${i})" class="del-btn"><i class="fa-solid fa-trash-can"></i></button></td>
   </tr>
     `;
@@ -30,7 +31,6 @@ function showCourtData() {
 // add new court
 function addNewCourt() {
   let court = {
-    courtId: courtId.value,
     courtDesc: courtDesc.value,
     courtType: courtType.value,
     courtPrice: Number(courtPrice.value),
@@ -38,6 +38,10 @@ function addNewCourt() {
   allCourts.push(court);
   localStorage.setItem("Courts", JSON.stringify(allCourts));
   showCourtData();
+
+  courtId.value = "";
+  courtDesc.value = "";
+  courtPrice.value = "";
 }
 
 let addCourtBtn = document.getElementById("add-court");

@@ -12,5 +12,12 @@ table {
 
 .del-btn {
   border: none;
-  background-color: none;
+  background-color: transparent;
+  color: #b90707;
+}
+
+.edit-btn {
+  border: none;
+  background-color: transparent;
+  color: #0874cc;
 }
