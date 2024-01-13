@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Court</title>
+    <title>Court Reservation System</title>
 
     <!-- Bootstrap -->
     <link
@@ -17,36 +17,115 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div>
-      <input placeholder="Description" type="text" id="court-desc" />
-      <select name="" id="court-type">
-        <option value="Football">Football</option>
-        <option value="Padel">Padel</option>
-      </select>
-      <input placeholder="Price per(Hour)" type="number" id="court-price" />
-      <div></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fa-solid fa-stopwatch-20"></i> ReseCourt
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Add Courts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reservations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <h1 class="text-center">Court Reservation System</h1>
+
+      <div class="court-form mt-4">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label for="court-desc" class="form-label"
+                >Court Description</label
+              >
+              <input
+                placeholder="Description"
+                type="text"
+                class="form-control"
+                id="court-desc"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="court-type" class="form-label">Court Type</label>
+              <select class="form-select" id="court-type">
+                <option value="Football">Football</option>
+                <option value="Padel">Padel</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="court-price" class="form-label"
+                >Price per (Hour)</label
+              >
+              <input
+                placeholder="Price per(Hour)"
+                type="number"
+                class="form-control"
+                id="court-price"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary btn-add-court w-100"
+              id="add-court"
+            >
+              Add Court
+            </button>
+          </div>
+        </form>
+
+        <button
+          type="button"
+          class="btn btn-secondary btn-update-court w-100"
+          id="update-court"
+        >
+          Update
+        </button>
+      </div>
+
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Price per (Hour)</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody id="court-body-table"></tbody>
+      </table>
     </div>
 
-    <button class="btn btn-light" id="add-court">Add Court</button>
-    <button class="btn btn-light" id="update-court">Update</button>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Price per(Hour)</th>
-          <th>Update</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-
-      <tbody id="court-body-table"></tbody>
-    </table>
-
-    <!-- Scripts -->
-
+    <!-- Bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5gMIFrYpgR5eC8mStiFf9vH9R8jxdtLrw="
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

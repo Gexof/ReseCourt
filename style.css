@@ -1,13 +1,25 @@
-input {
-  height: 35px;
-  outline: none;
-  border: none;
-  background-color: #e4e4e4;
-  border-radius: 6px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-table {
+/* body {
+  padding: 20px;
+} */
+
+.court-form {
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
   text-align: center;
+}
+
+.btn-add-court,
+.btn-update-court {
+  margin-top: 26px;
 }
 
 .del-btn {
