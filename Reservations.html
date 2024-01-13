@@ -19,7 +19,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <i class="fa-solid fa-stopwatch-20"></i> ReseCourt
         </a>
         <button
@@ -39,10 +39,10 @@
         >
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Add Courts</a>
+              <a class="nav-link" href="index.html">Add Courts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Reservations.html">Reservations</a>
+              <a class="nav-link" href="#">Reservations</a>
             </li>
           </ul>
         </div>
@@ -50,65 +50,65 @@
     </nav>
 
     <div class="container mt-4">
-      <h1 class="text-center mb-5">Court Reservation System</h1>
+      <h1 class="text-center">Court Reservation System</h1>
 
       <div class="court-form mt-4">
         <form>
           <div class="row g-3">
-            <div class="col-md-3">
+            <div class="col-md-6">
+              <label for="customer-name" class="form-label"
+                >Customer Name</label
+              >
+              <input
+                placeholder="Customer Name"
+                type="text"
+                class="form-control"
+                id="customer-name"
+              />
+            </div>
+            <!-- 
+            <div class="col-md-6">
               <label for="court-id" class="form-label">Court ID</label>
               <input
-                placeholder="ID"
-                type="text"
+                placeholder="Court ID"
+                type="number"
                 class="form-control"
                 id="court-id"
               />
+            </div> -->
+
+            <div class="col-md-6">
+              <label for="court-id" class="form-label">Court ID</label>
+              <select class="form-select" id="court-id"></select>
             </div>
 
-            <div class="col-md-3">
-              <label for="court-desc" class="form-label"
-                >Court Description</label
-              >
-              <input
-                placeholder="Description"
-                type="text"
-                class="form-control"
-                id="court-desc"
-              />
+            <div class="col-md-4">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" id="date" />
             </div>
 
-            <div class="col-md-3">
-              <label for="court-type" class="form-label">Court Type</label>
-              <select class="form-select" id="court-type">
-                <option value="Football">Football</option>
-                <option value="Padel">Padel</option>
-              </select>
+            <div class="col-md-4">
+              <label for="startTime">Start Time</label>
+              <input type="time" class="form-control" id="start-time" />
             </div>
 
-            <div class="col-md-3">
-              <label for="court-price" class="form-label"
-                >Price per (Hour)</label
-              >
-              <input
-                placeholder="Price per(Hour)"
-                type="number"
-                class="form-control"
-                id="court-price"
-              />
+            <div class="col-md-4">
+              <label for="endTime">End Time</label>
+              <input type="time" class="form-control" id="end-time" />
             </div>
 
             <button
               type="button"
-              class="btn btn-primary btn-add-court w-100"
-              id="add-court"
+              class="btn btn-primary w-100"
+              id="reservation-btn"
             >
-              Add Court
+              Reserve
             </button>
 
             <button
               type="button"
-              class="btn btn-secondary btn-update-court w-100"
-              id="update-court"
+              class="btn btn-secondary w-100"
+              id="update-reservation-btn"
             >
               Update
             </button>
@@ -120,15 +120,17 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Price per (Hour)</th>
+            <th>Customer Name</th>
+            <th>Court ID</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
         </thead>
 
-        <tbody id="court-body-table"></tbody>
+        <tbody id="res-body-table"></tbody>
       </table>
     </div>
 
@@ -150,6 +152,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="script.js"></script>
+    <script src="res.js"></script>
   </body>
 </html>

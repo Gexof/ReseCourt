@@ -1,4 +1,5 @@
-// let courtId = document.getElementById("court-id");
+// Main
+let courtId = document.getElementById("court-id");
 let courtDesc = document.getElementById("court-desc");
 let courtType = document.getElementById("court-type");
 let courtPrice = document.getElementById("court-price");
@@ -18,12 +19,11 @@ function showCourtData() {
   for (let i = 0; i < allCourts.length; i++) {
     courts += `
     <tr>
-    <th>${i + 1}</th>
+    <td>${allCourts[i].courtId}</td>
     <td>${allCourts[i].courtDesc}</td>
     <td>${allCourts[i].courtType}</td>
     <td>${allCourts[i].courtPrice}</td>
-    <td>
-    <button onclick="editCourt(${i})" class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button></td>
+    <td><button onclick="editCourt(${i})" class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button></td>
     <td><button onclick="deleteRow(${i})" class="del-btn"><i class="fa-solid fa-trash-can"></i></button></td>
   </tr>
     `;
@@ -34,6 +34,7 @@ function showCourtData() {
 // add new court
 function addNewCourt() {
   let court = {
+    courtId: courtId.value,
     courtDesc: courtDesc.value,
     courtType: courtType.value,
     courtPrice: Number(courtPrice.value),
@@ -42,6 +43,7 @@ function addNewCourt() {
   localStorage.setItem("Courts", JSON.stringify(allCourts));
   showCourtData();
 
+  courtId.value = "";
   courtDesc.value = "";
   courtPrice.value = "";
 }
@@ -68,8 +70,6 @@ function editCourt(i) {
   courtType.value = selectedCourt.courtType;
   courtPrice.value = selectedCourt.courtPrice;
 
-  // updateCourtBtn.removeEventListener("click", updateHandler);
-
   function updateHandler() {
     selectedCourt.courtDesc = courtDesc.value;
     selectedCourt.courtType = courtType.value;
@@ -80,7 +80,6 @@ function editCourt(i) {
     showCourtData();
 
     courtDesc.value = "";
-    courtType.value = "";
     courtPrice.value = "";
 
     addCourtBtn.style.display = "block";
@@ -91,3 +90,7 @@ function editCourt(i) {
 
   updateCourtBtn.addEventListener("click", updateHandler);
 }
+
+// Reservation
+
+/* <th>${i + 1}</th> */
