@@ -32,6 +32,41 @@ function showId() {
 
 showId();
 
+function getPrice(cId) {
+  let id = cId;
+  let price;
+  for (let i = 0; i < allCourts.length; i++) {
+    if (allCourts[i].courtId == id) {
+      price = allCourts[i].courtPrice;
+      break;
+    }
+  }
+
+  return price;
+}
+
+function getTime(sTime, eTime) {
+  var startTimeValue = sTime;
+  var endTimeValue = eTime;
+
+  var startDate = new Date("2000-01-01T" + startTimeValue);
+  var endDate = new Date("2000-01-01T" + endTimeValue);
+
+  var timeDiff = endDate - startDate;
+
+  var timeDiffInHours = timeDiff / (1000 * 60 * 60);
+
+  return timeDiffInHours;
+}
+
+function calcTotal(cId, sTime, eTime) {
+  let price = getPrice(cId);
+  let time = getTime(sTime, eTime);
+  let total = price * time;
+
+  return total;
+}
+
 function showResData() {
   let res = ``;
   for (let i = 0; i < allRes.length; i++) {
@@ -43,7 +78,7 @@ function showResData() {
     <td>${allRes[i].date}</td> 
     <td>${allRes[i].startTime}</td> 
     <td>${allRes[i].endTime}</td> 
-    <td>$</td> 
+    <td>${allRes[i].total}</td> 
     <td><button onclick="editCourt(${i})" class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button></td>
     <td><button onclick="deleteRow(${i})" class="del-btn"><i class="fa-solid fa-trash-can"></i></button></td>
     </tr>
@@ -53,12 +88,15 @@ function showResData() {
 }
 
 function addRes() {
+  let total = calcTotal(courtId.value, startTime.value, endTime.value);
+
   let Reserve = {
     customerName: customerName.value,
     courtId: courtId.value,
     date: date.value,
     startTime: startTime.value,
     endTime: endTime.value,
+    total: total,
   };
 
   allRes.push(Reserve);
@@ -79,21 +117,4 @@ function deleteRow(i) {
   allRes.splice(i, 1);
   localStorage.setItem("Reserve", JSON.stringify(allRes));
   showResData();
-}
-
-function calcTotal(courtId) {
-  let price = getPrice(courtId);
-}
-
-function getPrice(courtId) {
-  let id = courtId;
-  let price;
-  for (let i = 0; i < allCourts.length; i++) {
-    if (allCourts[i].courtId == id) {
-      price = allCourts[i].courtPrice;
-      break;
-    }
-  }
-
-  return price;
 }
