@@ -19,13 +19,13 @@ if (localStorage.getItem("Reserve") != null) {
   allRes = JSON.parse(localStorage.getItem("Reserve"));
 }
 
-console.log(allCourts);
-
 function showId() {
   let courtsOptions = ``;
 
   for (let i = 0; i < allCourts.length; i++) {
-    courtsOptions += `<option value="${i}">${allCourts[i].courtId}</option>`;
+    courtsOptions += `<option value="${i + 1}">${
+      allCourts[i].courtId
+    }</option>`;
   }
   courtId.innerHTML = courtsOptions;
 }
@@ -39,10 +39,11 @@ function showResData() {
     <tr>
     <td>${i + 1}</td> 
     <td>${allRes[i].customerName}</td>
-    <td>${allRes[i].courtId}</td>
+    <td>${allRes[i].courtId++}</td>
     <td>${allRes[i].date}</td> 
     <td>${allRes[i].startTime}</td> 
     <td>${allRes[i].endTime}</td> 
+    <td>$</td> 
     <td><button onclick="editCourt(${i})" class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button></td>
     <td><button onclick="deleteRow(${i})" class="del-btn"><i class="fa-solid fa-trash-can"></i></button></td>
     </tr>
@@ -73,3 +74,26 @@ function addRes() {
 addResBtn.addEventListener("click", addRes);
 
 showResData();
+
+function deleteRow(i) {
+  allRes.splice(i, 1);
+  localStorage.setItem("Reserve", JSON.stringify(allRes));
+  showResData();
+}
+
+function calcTotal(courtId) {
+  let price = getPrice(courtId);
+}
+
+function getPrice(courtId) {
+  let id = courtId;
+  let price;
+  for (let i = 0; i < allCourts.length; i++) {
+    if (allCourts[i].courtId == id) {
+      price = allCourts[i].courtPrice;
+      break;
+    }
+  }
+
+  return price;
+}
